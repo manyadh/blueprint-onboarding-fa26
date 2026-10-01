@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Stack } from 'expo-router';
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  useFonts,
+} from '@expo-google-fonts/poppins';
 import BpIcon from '../../assets/bp-icon.svg';
 
 function HeaderTitle() {
@@ -15,6 +20,8 @@ function HeaderTitle() {
 }
 
 function StackLayout() {
+  const [fontsLoaded] = useFonts({ Poppins_400Regular, Poppins_600SemiBold });
+  if (!fontsLoaded) return null;
   return (
     <SafeAreaProvider>
       <Stack>
@@ -46,9 +53,8 @@ const styles = StyleSheet.create({
     marginRight: 16,
   },
   headerText: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Poppins_600SemiBold',
     fontSize: 16,
-    fontWeight: '600',
     letterSpacing: -0.07,
     color: '#262626',
     lineHeight: 18,
